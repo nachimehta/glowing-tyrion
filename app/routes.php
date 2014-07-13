@@ -11,7 +11,33 @@
 |
 */
 
-Route::get('/', function()
+//seeding
+Route::get('/seed', function()
 {
-	return View::make('hello');
+    Cache::forget('round');
+    Cache::forget('track');
+    Cache::forever('track', 'Iron Throne');
+    Cache::forever('round', '1');   
+    Round::where('number', '=', '2')->delete();
+    $user = User::find(1);
+    $user->tokens = 5;
+    $user->save();
+});
+
+//show pages
+Route::get('/', 'ThroneController@index');
+Route::get('/bid', array(
+	'before' => 'auth.basic', 'uses' => 'ThroneController@bid'));
+
+Route::get('/user', 'ThroneController@user');
+
+//REST APIs
+Route::post('/bid', 'ThroneController@editBid');
+Route::post('/user', 'ThroneController@addUser');
+Route::post('/changeBid', 'ThroneController@changeBid');
+
+Route::get('/logout', function()
+{
+    Auth::logout();
+    return Response::make('You are now logged out.');
 });

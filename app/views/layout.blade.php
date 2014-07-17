@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Game of Thrones Bidding App</title>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.2.0+1/darkly/bootstrap.min.css"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="container">

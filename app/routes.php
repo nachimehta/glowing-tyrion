@@ -30,11 +30,14 @@ Route::get('/bid', array(
 	'before' => 'auth.basic', 'uses' => 'ThroneController@bid'));
 
 Route::get('/user', 'ThroneController@user');
+Route::get('/admin', 'AdminController@admin');
 
 //REST APIs
 Route::post('/bid', 'ThroneController@editBid');
 Route::post('/user', 'ThroneController@addUser');
 Route::post('/changeBid', 'ThroneController@changeBid');
+Route::post('/updateUser', 'AdminController@updateUser');
+Route::post('/updateMeta', 'AdminController@updateMeta');
 
 Route::get('/logout', function()
 {
